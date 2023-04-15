@@ -93,7 +93,7 @@ function App() {
             onClick={clickAddButton}
             className="btn btn-success btn-custom"
           >
-            추가하기
+            ADD
           </button>
         </div>
       </div>

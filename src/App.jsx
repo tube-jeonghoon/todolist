@@ -6,7 +6,7 @@ function App() {
   // contents 이름 바꿔주세요.
   const [todos, setTodos] = useState([]);
   const [title, setTitle] = useState("");
-  const [todo, setTodo] = useState("");
+  const [content, setContent] = useState("");
 
   // 하나의 state 관리해주세요.
   // 하나의 state로 하나의 handler로
@@ -15,7 +15,7 @@ function App() {
   };
 
   const todoChangeHandler = (e) => {
-    setTodo(e.target.value);
+    setContent(e.target.value);
   };
 
   //추가 버튼
@@ -24,20 +24,20 @@ function App() {
       // 난수 사용 추천 uuid 알아보기
       id: todos.length + 1,
       title,
-      todo,
+      content,
       isDone: false,
     };
 
     setTodos([...todos, newTodo]);
     setTitle("");
-    setTodo("");
+    setContent("");
   };
 
   // 삭제버튼
   const clickRemoveButton = (id) => {
     // todo.id가 id와 서로 일치하지 않는 요소들로 이루어진 새로운 배열 `newTodo`를 만듭니다.
     const newTodo = todos.filter((todo) => todo.id !== id);
-    // setTodo 함수를 호출할 때, newTodo 변수를 배열로 감싸주면, 기존 배열과 새로운 배열이 중첩된 형태로 들어가기 때문에 문제가 발생
+    // setTodo 함수를 호출할 때, newT 변수를 배열로 감싸주면, 기존 배열과 새로운 배열이 중첩된 형태로 들어가기 때문에 문제가 발생
     setTodos(newTodo);
   };
 
@@ -89,7 +89,7 @@ function App() {
             className="form-control"
             placeholder="Content"
             onChange={todoChangeHandler}
-            value={todo}
+            value={content}
           />
         </div>
         <div className="col-sm">
@@ -116,7 +116,7 @@ function App() {
                       <div className="card card-costom">
                         <div className="card-body">
                           <h5 className="card-title">{item.title}</h5>
-                          <p className="card-text">{item.todo}</p>
+                          <p className="card-text">{item.content}</p>
                           <button
                             className="btn btn-success btn-custom"
                             onClick={() => clickRemoveButton(item.id)}
@@ -150,7 +150,7 @@ function App() {
                       <div className="card card-costom">
                         <div className="card-body">
                           <h5 className="card-title">{item.title}</h5>
-                          <p className="card-text">{item.todo}</p>
+                          <p className="card-text">{item.content}</p>
                           <button
                             className="btn btn-success btn-custom"
                             onClick={() => clickRemoveButton(item.id)}

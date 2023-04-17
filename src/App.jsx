@@ -3,19 +3,30 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  // contents 이름 바꿔주세요.
-  const [todos, setTodos] = useState([]);
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  // contents 이름 바꿔주세요. (완료)
+  // const [todos, setTodos] = useState([]);
+  // const [title, setTitle] = useState("");
+  // const [content, setContent] = useState("");
+  const [todos, setTodos] = useState({
+    title: "",
+    content: "",
+  });
 
   // 하나의 state 관리해주세요.
-  // 하나의 state로 하나의 handler로
-  const titleChangeHandler = (e) => {
-    setTitle(e.target.value);
-  };
+  // 하나의 state로 하나의 handler로 (완료)
+  // const titleChangeHandler = (e) => {
+  //   setTitle(e.target.value);
+  // };
 
-  const todoChangeHandler = (e) => {
-    setContent(e.target.value);
+  // const todoChangeHandler = (e) => {
+  //   setContent(e.target.value);
+  // };
+  const inputChangeHandler = (e) => {
+    const { name, value } = e.target;
+    setTodos({
+      ...todos,
+      [name]: value,
+    });
   };
 
   //추가 버튼
@@ -23,14 +34,16 @@ function App() {
     const newTodo = {
       // 난수 사용 추천 uuid 알아보기
       id: todos.length + 1,
-      title,
-      content,
+      title: todos.title,
+      content: todos.content,
       isDone: false,
     };
 
     setTodos([...todos, newTodo]);
-    setTitle("");
-    setContent("");
+    setTodos({
+      title: "",
+      content: "",
+    });
   };
 
   // 삭제버튼

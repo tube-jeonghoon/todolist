@@ -3,20 +3,7 @@ import { useState } from "react";
 import "./App.css";
 
 const App = () => {
-  const [todos, setTodos] = useState([
-    // {
-    //   id: 1,
-    //   title: "Todolist 만들기",
-    //   content: "Todo 리스트를 만들어 봅시다",
-    //   isDone: false,
-    // },
-    // {
-    //   id: 2,
-    //   title: "변수 변경하기",
-    //   content: "변수 이름을 막 적지 맙시다.",
-    //   isDone: false,
-    // },
-  ]);
+  const [todos, setTodos] = useState([]);
   const [input, setInput] = useState({ title: "", content: "" });
 
   // -------------- Input Handler -------------
@@ -68,13 +55,13 @@ const App = () => {
 
   // -------------- 취소 버튼 --------------
   const clickCancelButton = (id) => {
-    const newTodos = todos.map((todo) => {
+    const newTodo = todos.map((todo) => {
       if (todo.id === id) {
         return { ...todo, isDone: false };
       }
       return todo;
     });
-    setTodos(newTodos);
+    setTodos(newTodo);
   };
 
   return (
@@ -135,7 +122,7 @@ const App = () => {
                         className="btn"
                         onClick={() => clickRemoveButton(item.id)}
                       >
-                        삭제하기
+                        삭제
                       </button>
                     </div>
                     <div className="done_box">
@@ -170,7 +157,7 @@ const App = () => {
                         className="btn"
                         onClick={() => clickRemoveButton(item.id)}
                       >
-                        삭제하기
+                        삭제
                       </button>
                     </div>
                     <div className="cancel_box">

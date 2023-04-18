@@ -57,13 +57,13 @@ const App = () => {
 
   // -------------- 완료 버튼 --------------
   const clickDoneButton = (id) => {
-    const newTodos = todos.map((todo) => {
+    const newTodo = todos.map((todo) => {
       if (todo.id === id) {
-        return { ...todo, isDone: false };
+        return { ...todo, isDone: true };
       }
       return todo;
     });
-    setTodos(newTodos);
+    setTodos(newTodo);
   };
 
   // -------------- 취소 버튼 --------------
@@ -138,16 +138,53 @@ const App = () => {
                         삭제하기
                       </button>
                     </div>
+                    <div className="done_box">
+                      <button
+                        className="btn"
+                        onClick={() => clickDoneButton(item.id)}
+                      >
+                        완료
+                      </button>
+                    </div>
                   </div>
                 );
               }
             })}
           </div>
         </div>
-        {/* -------------- Done zone -------------- */}
+        {/* -------------- Done Zone -------------- */}
         <div className="done_zone">
-          <div className="working_zone">
+          {/* -------------- Done List -------------- */}
+          <div className="done_list">
             <p>Done~⚡️</p>
+            {todos.map((item) => {
+              if (item.isDone === true) {
+                return (
+                  <div key={item.id}>
+                    <div className="contents_box">
+                      <h2>{item.title}</h2>
+                      <p>{item.content}</p>
+                    </div>
+                    <div className="remove_box">
+                      <button
+                        className="btn"
+                        onClick={() => clickRemoveButton(item.id)}
+                      >
+                        삭제하기
+                      </button>
+                    </div>
+                    <div className="cancel_box">
+                      <button
+                        className="btn"
+                        onClick={() => clickCancelButton(item.id)}
+                      >
+                        취소
+                      </button>
+                    </div>
+                  </div>
+                );
+              }
+            })}
           </div>
         </div>
       </div>

@@ -51,9 +51,15 @@ const App = () => {
 
   // -------------- 삭제 버튼 --------------
   const clickRemoveButton = (id) => {
+    const newTodo = todos.filter((todo) => todo.id !== id);
+    setTodos(newTodo);
+  };
+
+  // -------------- 완료 버튼 --------------
+  const clickDoneButton = (id) => {
     const newTodos = todos.map((todo) => {
       if (todo.id === id) {
-        return { ...todo, isDone: true };
+        return { ...todo, isDone: false };
       }
       return todo;
     });
@@ -120,8 +126,18 @@ const App = () => {
               if (item.isDone === false) {
                 return (
                   <div key={item.id}>
-                    <h2>{item.title}</h2>
-                    <p>{item.content}</p>
+                    <div className="contents_box">
+                      <h2>{item.title}</h2>
+                      <p>{item.content}</p>
+                    </div>
+                    <div className="remove_box">
+                      <button
+                        className="btn"
+                        onClick={() => clickRemoveButton(item.id)}
+                      >
+                        삭제하기
+                      </button>
+                    </div>
                   </div>
                 );
               }

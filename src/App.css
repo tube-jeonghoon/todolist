@@ -5,30 +5,6 @@
   font-family: 'Poppins', sans-serif;
 }
 
-.container {
-  margin: 0 auto;
-  max-width: 1200px;
-  min-width: 800px;
-}
-
-.header {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-  margin-bottom: 20px;
-  border: 1px black solid
-}
-
-.contentInput {
-  align-items: center;
-  padding: 5px;
-}
-
-.btn-custom {
-  margin: 5px;
-}
-
-.card-costom {
-  margin: 5px;
+.App {
+  background-color: rgb(255, 215, 215);
 }

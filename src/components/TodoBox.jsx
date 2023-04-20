@@ -1,6 +1,11 @@
 import React from "react";
 import TodoCard from "./TodoCard";
 import DoneCard from "./DoneCard";
+import styled from "styled-components";
+
+const StTodoBox = styled.div`
+  /* border: 1px solid black; */
+`;
 
 const TodoBox = ({ todos, setTodos }) => {
   // -------------- 삭제 버튼 --------------
@@ -10,10 +15,10 @@ const TodoBox = ({ todos, setTodos }) => {
   };
 
   return (
-    <div className="todo_box">
+    <StTodoBox className="todo_box">
       {/* -------------- Working zone -------------- */}
       <div className="working_zone">
-        <p>Working~🔥</p>
+        <h2>Working~🔥</h2>
         {/* -------------- Working list -------------- */}
         <TodoCard
           todos={todos}
@@ -23,7 +28,7 @@ const TodoBox = ({ todos, setTodos }) => {
       </div>
       {/* -------------- Done Zone -------------- */}
       <div className="done_zone">
-        <p>Done~⚡️</p>
+        <h2>Done~⚡️</h2>
         {/* -------------- Done List -------------- */}
         <DoneCard
           todos={todos}
@@ -31,7 +36,7 @@ const TodoBox = ({ todos, setTodos }) => {
           clickRemoveButton={clickRemoveButton}
         />
       </div>
-    </div>
+    </StTodoBox>
   );
 };
 
